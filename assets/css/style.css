@@ -1,0 +1,15 @@
+.sidebar .nav-link .feather {
+    margin-right: 4px;
+    color: #999;
+}
+
+.feather {
+	width: 16px;
+    height: 16px;
+    vertical-align: text-bottom;
+}
+
+.sidebar .nav-link {
+    font-weight: 500;
+    color: #333;
+}
