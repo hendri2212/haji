@@ -9,11 +9,14 @@
 	<script src="<?= base_url('./assets/js/feather.min.js') ?>"></script>
 </head>
 <body>
-	<div class="p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+	<div class="p-2 px-md-4 mb-3 bg-white border-bottom shadow-sm">
 		<div class="container">
-			<div class="d-flex flex-column flex-md-row align-items-center">
-				<!-- <h5 class="my-0 mr-md-auto font-weight-normal">Company name</h5> -->
-				<h5 class="my-2 mr-md-auto font-weight-normal">Company name</h5>
+			<div class="d-flex align-items-center">
+				<img src="<?= base_url('./assets/img/logo.png') ?>" class="logo img-fluid mr-3">
+				<div class="">
+					<h4 class="mr-md-auto font-weight-normal mb-0 text-uppercase">Website Resmi</h4>
+					<h6 class="mr-md-auto font-weight-normal mb-0 text-muted text-uppercase">Kementerian Agama Kabupaten Kotabaru</h6>
+				</div>
 				<!-- <nav class="my-2 my-md-0 mr-md-3">
 					<a class="p-2 text-dark" href="#">Features</a>
 					<a class="p-2 text-dark" href="#">Enterprise</a>
@@ -30,61 +33,53 @@
 				<div class="sidebar-sticky pt-3">
 					<ul class="nav flex-column">
 						<li class="nav-item">
-							<a class="nav-link active" href="#">
-							  	<span data-feather="home"></span>
-							  	Home
+							<a class="nav-link active" href="<?= base_url('./content/home') ?>">
+								<span data-feather="home"></span>
+								Home
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">
+							<a class="nav-link" href="<?= base_url('./content/login') ?>">
 								<span data-feather="log-in"></span>
 								Login
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">
+							<a class="nav-link" href="<?= base_url('./content/pendaftaran') ?>">
 								<span data-feather="monitor"></span>
 								Pendaftaran
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">
+							<a class="nav-link" href="<?= base_url('./content/pembayaran') ?>">
 								<span data-feather="dollar-sign"></span>
 								Pembayaran
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">
+							<a class="nav-link" href="<?= base_url('./content/berkas') ?>">
 								<span data-feather="file-text"></span>
 								Kelengkapan Berkas
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">
+							<a class="nav-link" href="<?= base_url('./content/jadwal') ?>">
 								<span data-feather="clock"></span>
-								Jadwal Keberangkatan
+								Jadwal Berangkat
 							</a>
 						</li>
 					</ul>
 				</div>
 			</nav>
 			<main role="main" class="col-md-8 ml-sm-auto col-lg-9 px-md-4">
-				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<h1 class="h2">Dashboard</h1>
-					<div class="btn-toolbar mb-2 mb-md-0">
-						<div class="btn-group mr-2">
-							<input type="text" class="form-control border-secondary" placeholder="Type here">
-						</div>
-						<input type="button" value="Search" class="btn btn-info">
-					</div>
-				</div>
 				<?php echo $content ?>
+				<!-- <p class="text-center">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p> -->
+				<p class="text-center border-top mt-5">Page rendered in <strong>{elapsed_time}</strong> seconds. Powered by <a href="https://tukarjual.com/bio" target="_blank">Hendri Arifin, S.Kom</a></p>
 			</main>
 		</div>
 	</div>	
-	<p class="text-center">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
 	<script>
-      feather.replace()
+		feather.replace()
     </script>
 </body>
 </html>
