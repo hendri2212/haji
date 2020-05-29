@@ -123,7 +123,7 @@
             <input type="text" placeholder="Kode Diagnosis" class="form-control">
         </div>
     </div>
-    <div class="row">
+    <div class="form-group row">
         <div class="col-3">
             <img src="<?= base_url('./assets/img/no-image.png') ?>" class="border img-fluid mb-1">
             <div class="input-group">
@@ -157,5 +157,7 @@
             </div>
         </div>
     </div>
-    <input type="button" value="Simpan" class="btn btn-success">
+    <div class="d-flex flex-row-reverse">
+        <input type="button" value="Simpan" class="btn btn-success">
+    </div>
 </form>

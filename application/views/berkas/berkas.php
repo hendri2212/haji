@@ -3,6 +3,12 @@
 </div>
 <form action="" method="post">
     <div class="form-group row">
+        <label class="col-lg-2">ID Jamaah</label>
+        <div class="col-lg-6">
+            <input type="text" value="2212" class="form-control-plaintext">
+        </div>
+    </div>
+    <div class="form-group row">
         <label class="col-lg-2">KTP</label>
         <div class="col-lg-6">
             <input type="text" name="" class="form-control">
@@ -38,5 +44,7 @@
             <input type="text" name="" class="form-control">
         </div>
     </div>
-    <input type="button" value="Simpan" class="btn btn-success">
+    <div class="d-flex flex-row-reverse col-lg-8">
+        <input type="button" value="Simpan" class="btn btn-success">
+    </div>
 </form>

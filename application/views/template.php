@@ -50,6 +50,7 @@
 								Pendaftaran
 							</a>
 						</li>
+						<?php if ($this->session->userdata("status")=='success') { ?>
 						<li class="nav-item">
 							<a class="nav-link" href="<?= base_url('./content/pembayaran') ?>">
 								<span data-feather="dollar-sign"></span>
@@ -68,6 +69,7 @@
 								Jadwal Berangkat
 							</a>
 						</li>
+						<?php } ?>
 					</ul>
 				</div>
 			</nav>
