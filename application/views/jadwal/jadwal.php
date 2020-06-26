@@ -1,32 +1,32 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 	<h1 class="h2">Jadwal Keberangkatan</h1>
 </div>
-<form action="" method="post">
-    <div class="form-group row">
-        <label class="col-lg-3">Gelombang</label>
-        <div class="col-lg-6">
-            <input type="text" name="" class="form-control">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label class="col-lg-3">Keloter</label>
-        <div class="col-lg-6">
-            <input type="text" name="" class="form-control">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label class="col-lg-3">Tanggal Berangkat</label>
-        <div class="col-lg-6">
-            <input type="date" name="" class="form-control">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label class="col-lg-3">Tanggal Pulang</label>
-        <div class="col-lg-6">
-            <input type="date" name="" class="form-control">
-        </div>
-    </div>
-    <div class="d-flex flex-row-reverse col-lg-9">
-        <input type="button" value="Simpan" class="btn btn-success">
-    </div>
-</form>
+<a href="<?= base_url('content/addJadwal') ?>" class="btn btn-info">Tambah Data</a>
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Gelombang</th>
+                <th>Keloter</th>
+                <th>Tanggal Berangkat</th>
+                <th>Tanggal Pulang</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php $no=1; foreach ($dataJadwal as $data) { ?>
+            <tr>
+                <td><?= $no++ ?></td>
+                <td><?= $data->gelombang ?></td>
+                <td><?= $data->kloter ?></td>
+                <td><?= $data->tgl_berangkat ?></td>
+                <td><?= $data->tgl_pulang ?></td>
+                <!-- <td>
+                    <a href="<?= base_url('content/editJadwal/'.$data->id) ?>"><i data-feather="edit"></i></a>
+                    <a href="<?= base_url('content/deleteJadwal/'.$data->id) ?>" onclick="return confirm('Apakah Anda Yakin ?');" class="text-danger"><i data-feather="trash-2"></i></a>
+                </td> -->
+            </tr>
+            <?php } ?>
+        </tbody>
+    </table>
+</div>
