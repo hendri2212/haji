@@ -1,67 +1,33 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 	<h1 class="h2">Pembayaran</h1>
 </div>
-<form action="" method="post">
-    <div class="form-group row">
-        <label class="col-lg-3">ID Jamaah</label>
-        <div class="col-lg-6">
-            <input type="text" value="2212" class="form-control-plaintext">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label class="col-lg-3">Jumlah Transfer Terakhir</label>
-        <div class="col-lg-6">
-            <input type="text" name="" class="form-control">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label class="col-lg-3">Total Pembayaran</label>
-        <div class="col-lg-6">
-            <input type="text" name="" class="form-control">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label class="col-lg-3">Status</label>
-        <div class="col-lg-6">
-            <input type="text" name="" class="form-control">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label class="col-lg-3">Status Pembayaran</label>
-        <div class="col-lg-6">
-            <input type="text" name="" class="form-control">
-        </div>
-    </div>
-    <div class="d-flex flex-row-reverse col-lg-9">
-        <input type="button" value="Simpan" class="btn btn-success">
-    </div>
-</form>
-<!-- <div class="table-responsive">
-	<table class="table table-striped table-sm table-hover">
+<a href="<?= base_url('content/addPembayaran') ?>" class="btn btn-info">Tambah Data</a>
+<div class="table-responsive">
+	<table class="table table-striped table-hover">
 	  <thead>
 	    <tr>
-	      <th>#</th>
-	      <th>Header</th>
-	      <th>Header</th>
-	      <th>Header</th>
-	      <th>Header</th>
+	      <th>No</th>
+	      <th>Jumlah Transfer</th>
+	      <th>Total Pembayaran</th>
+	      <th>Status</th>
+	      <th>Status Pembayaran</th>
 	    </tr>
 	  </thead>
 	  <tbody>
+      <?php if (empty($dataPembayaran)) { ?>
+      <tr>
+          <td colspan="5" class="text-center font-weight-bold">NO DATA</td>
+      </tr>
+      <?php } ?>
+      <?php $no=1; foreach ($dataPembayaran as $data) { ?>
 	    <tr>
-	      <td>1,001</td>
-	      <td>Lorem</td>
+	      <td><?= $no++ ?></td>
+	      <td><?= $data->jumlah_transfer ?></td>
 	      <td>ipsum</td>
-	      <td>dolor</td>
-	      <td>sit</td>
+	      <td><?= $data->status_konfirmasi ?></td>
+	      <td>ipsum</td>
 	    </tr>
-	    <tr>
-	      <td>1,015</td>
-	      <td>sodales</td>
-	      <td>ligula</td>
-	      <td>in</td>
-	      <td>libero</td>
-	    </tr>
+      <?php } ?>
 	  </tbody>
 	</table>
-</div> -->
+</div>
