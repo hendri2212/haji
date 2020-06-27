@@ -1,12 +1,12 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
-
 class Content extends MY_Controller {
+	public function __construct(){
+		parent::__construct();
+		$this->load->model('model');
+	}
+	
+	// beranda-----------------------------------------
 	public function index() {
-		$data_session = array(
-			'status'	=> "success"
-		);
-		$this->session->set_userdata($data_session);
-
 		$this->pages('home/home');
 	}
 
@@ -14,54 +14,108 @@ class Content extends MY_Controller {
 		$this->pages('home/home');
 	}
 
+	// pendaftaran--------------------------------------
+	public function pendaftaran() {
+		if ($this->is_logged_in()) {
+			$data['jamaah'] = $this->model->jamaah();
+			$this->pages('pendaftaran/pendaftaran', $data);
+		} else {
+			// redirect(base_url("./content/login"));
+			// $this->pages('login/login');
+			show_404();
+		}
+	}
+
+	public function register() {
+		$this->model->register();
+	}
+
+	public function addPendaftaran() {
+		$this->pages('pendaftaran/addPendaftaran');
+	}
+	
+	// pembayaran---------------------------------------
 	public function pembayaran() {
-		$this->pages('pembayaran/pembayaran');
+		$data["dataPembayaran"] = $this->model->dataPembayaran();
+		$this->pages('pembayaran/pembayaran', $data);
+	}
+	
+	public function addPembayaran() {
+		$data['jamaah'] = $this->model->jamaah();
+		$this->pages("pembayaran/addPembayaran", $data);
+	}
+
+	public function bayar() {
+		$this->model->bayar();
+	}
+
+	// berkas-------------------------------------------
+	public function berkas() {
+		$data['dataBerkas'] = $this->model->dataBerkas();
+		$this->pages('berkas/berkas', $data);
+	}
+	
+	public function saveBerkas() {
+		$this->model->saveBerkas();
+	}
+	
+	public function addBerkas() {
+		$data['jamaah']	= $this->model->jamaah();
+		$this->pages('berkas/addBerkas', $data);
+	}
+
+	// jadwal-------------------------------------------
+	public function addJadwal() {
+		$data['jamaah']	= $this->model->jamaah();
+		$this->pages('jadwal/addJadwal', $data);
+	}
+
+	public function jadwal() {
+		$data['dataJadwal'] = $this->model->dataJadwal();
+		$this->pages('jadwal/jadwal', $data);
+	}
+
+	public function schedule() {
+		$this->model->schedule();
+	}
+
+	// akun---------------------------------------------
+	public function logout(){
+		$this->session->sess_destroy();
+		redirect (base_url('./'));
 	}
 
 	public function login() {
 		$this->pages('login/login');
 	}
 
-	public function pendaftaran() {
-		$this->pages('pendaftaran/pendaftaran');
+	public function is_logged_in() {
+        $status = $this->session->userdata('status');
+        return isset($status);
 	}
 
-	public function berkas() {
-		$this->pages('berkas/berkas');
-	}
-
-	public function jadwal() {
-		$this->pages('jadwal/jadwal');
-	}
-
-	// Page admin
-	public function loginx(){
-		// $username = $this->input->post('username');
-		// $password = $this->input->post('password');
-		// $where = array(
-		// 	'username' => $username,
-		// 	'password' => md5($password)
-		// 	);
-		// $akses = $this->adm_model->cek_login($where)->row();
-		// $cek = $this->adm_model->cek_login($where)->num_rows();
-		// if($cek > 0){
-			// $data_session = array(
-			// 	'id_pegawai'	=> $akses->id_pegawai,
-			// 	'IdBidang'		=> $akses->IdBidang,
-			// 	'username'		=> $username,
-			// 	'nama_pegawai'	=> $akses->nama_pegawai,
-			// 	'level'			=> $akses->level,
-			// 	'status'		=> "success"
-			// );
-			// $this->session->set_userdata($data_session);
-			// redirect(base_url("content/"));
-		// }else{ echo "<script>alert('Username atau Password yang Anda masukkan SALAH'); window.location.href='../'</script>"; 
-		// 	echo "gagal";
-		// }
-	}
-
-	public function logout(){
-		$this->session->sess_destroy();
-		redirect (base_url('./'));
+	public function masuk(){
+		$username = $this->input->post('username');
+		$password = $this->input->post('password');
+		$where = array(
+			'username' => $username,
+			'password' => md5($password)
+			);
+		$akses = $this->model->cek_login($where)->row();
+		$cek = $this->model->cek_login($where)->num_rows();
+		if($cek > 0){
+			$data_session = array(
+				'id'			=> $akses->id,
+				'username'		=> $username,
+				'password'		=> $password,
+				'full_name'		=> $akses->full_name,
+				'level'			=> $akses->level,
+				'status'		=> "success"
+			);
+			$this->session->set_userdata($data_session);
+			redirect(base_url("content/"));
+		} else {
+			echo "<script>alert('Username atau Password yang Anda masukkan SALAH'); window.location.href='../'</script>"; 
+		}
 	}
 }
