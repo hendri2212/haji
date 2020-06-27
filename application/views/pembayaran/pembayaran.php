@@ -6,26 +6,28 @@
 	<table class="table table-striped table-hover">
 	  <thead>
 	    <tr>
-	      <th>No</th>
-	      <th>Jumlah Transfer</th>
-	      <th>Total Pembayaran</th>
-	      <th>Status</th>
-	      <th>Status Pembayaran</th>
+	    	<th>No</th>
+        	<th>Nama Jama'ah</th>
+	    	<th>Jumlah Transfer</th>
+	    	<th>Total Pembayaran</th>
+	    	<th>Status</th>
+	    	<th>Status Pembayaran</th>
 	    </tr>
 	  </thead>
 	  <tbody>
       <?php if (empty($dataPembayaran)) { ?>
       <tr>
-          <td colspan="5" class="text-center font-weight-bold">NO DATA</td>
+          <td colspan="6" class="text-center font-weight-bold">NO DATA</td>
       </tr>
       <?php } ?>
       <?php $no=1; foreach ($dataPembayaran as $data) { ?>
 	    <tr>
-	      <td><?= $no++ ?></td>
-	      <td>Rp <?= number_format($data->jumlah_transfer) ?></td>
-	      <td>Rp <?= number_format($data->sisa_pembayaran) ?></td>
-	      <td><?= $data->status_konfirmasi ?></td>
-	      <td><?= $data->nama_penyetor ?></td>
+	    	<td><?= $no++ ?></td>
+            <td><?= $data->nama_lengkap ?></td>
+	    	<td>Rp <?= number_format($data->jumlah_transfer) ?></td>
+	    	<td>Rp <?= number_format($data->sisa_pembayaran) ?></td>
+	    	<td><?= $data->status_konfirmasi ?></td>
+	    	<td><?= $data->nama_penyetor ?></td>
 	    </tr>
       <?php } ?>
 	  </tbody>
