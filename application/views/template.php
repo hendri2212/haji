@@ -17,7 +17,7 @@
 			<div class="d-flex align-items-center">
 				<img src="<?= base_url('./assets/img/logo.png') ?>" class="logo img-fluid mr-3">
 				<div class="">
-					<h4 class="mr-md-auto font-weight-normal mb-0 text-white text-uppercase">Website pelayanan</h4>
+					<h4 class="mr-md-auto font-weight-normal mb-0 text-white text-uppercase">Website pelayanan haji</h4>
 					<h6 class="mr-md-auto font-weight-normal mb-0 text-white text-uppercase">Kementerian Agama Kabupaten Kotabaru</h6>
 				</div>
 				<!-- <nav class="my-2 my-md-0 mr-md-3">
