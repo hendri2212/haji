@@ -7,6 +7,7 @@
         <thead>
             <tr>
                 <th>No</th>
+                <th>Nama Jama'ah</th>
                 <th>Gelombang</th>
                 <th>Keloter</th>
                 <th>Tanggal Berangkat</th>
@@ -16,12 +17,13 @@
         <tbody>
             <?php if (empty($dataJadwal)) { ?>
             <tr>
-                <td colspan="5" class="text-center font-weight-bold">NO DATA</td>
+                <td colspan="6" class="text-center font-weight-bold">NO DATA</td>
             </tr>
             <?php } ?>
             <?php $no=1; foreach ($dataJadwal as $data) { ?>
             <tr>
                 <td><?= $no++ ?></td>
+                <td><?= $data->nama_lengkap ?></td>
                 <td><?= $data->gelombang ?></td>
                 <td><?= $data->kloter ?></td>
                 <td><?= $data->tgl_berangkat ?></td>
