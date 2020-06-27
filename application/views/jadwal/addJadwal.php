@@ -3,6 +3,16 @@
 </div>
 <form action="<?= base_url('./content/schedule') ?>" method="post">
     <div class="form-group row">
+        <label class="col-lg-3">Nama Jamaah</label>
+        <div class="col-lg-6">
+            <select name="jamaah_id" class="form-control">
+                <?php foreach ($jamaah as $data) { ?>
+                    <option value="<?= $data->id ?>"><?= $data->nama_lengkap ?></option>
+                <?php } ?>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
         <label class="col-lg-3">Gelombang</label>
         <div class="col-lg-6">
             <input type="text" name="gelombang" class="form-control">
