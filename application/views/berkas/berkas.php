@@ -7,23 +7,25 @@
         <thead>
             <tr>
                 <th>No</th>
+                <th>Nama Jama'ah</th>
                 <th>KTP</th>
                 <th>Buku Nikah</th>
                 <th>Akta</th>
                 <th>Ijazah</th>
                 <th>Passpor</th>
-                <th>Kesetahan</th>
+                <th>Kesehatan</th>
             </tr>
         </thead>
         <tbody>
             <?php if (empty($dataBerkas)) { ?>
             <tr>
-                <td colspan="7" class="text-center font-weight-bold">NO DATA</td>
+                <td colspan="8" class="text-center font-weight-bold">NO DATA</td>
             </tr>
             <?php } ?>
             <?php $no=1; foreach ($dataBerkas as $data) { ?>
             <tr>
                 <td><?= $no++ ?></td>
+                <td><?= $data->nama_lengkap ?></td>
                 <td><?= $data->ktp ?></td>
                 <td><?= $data->buku_nikah ?></td>
                 <td><?= $data->akta_kelahiran ?></td>
