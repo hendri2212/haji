@@ -22,10 +22,10 @@
       <?php $no=1; foreach ($dataPembayaran as $data) { ?>
 	    <tr>
 	      <td><?= $no++ ?></td>
-	      <td><?= $data->jumlah_transfer ?></td>
-	      <td>ipsum</td>
+	      <td>Rp <?= number_format($data->jumlah_transfer) ?></td>
+	      <td>Rp <?= number_format($data->sisa_pembayaran) ?></td>
 	      <td><?= $data->status_konfirmasi ?></td>
-	      <td>ipsum</td>
+	      <td><?= $data->nama_penyetor ?></td>
 	    </tr>
       <?php } ?>
 	  </tbody>

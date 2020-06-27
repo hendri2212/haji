@@ -19,13 +19,13 @@
   <div class="form-group row">
     <label class="col-lg-3">Jumlah Transfer Terakhir</label>
     <div class="col-lg-6">
-        <input type="text" name="jumlah_transfer" class="form-control">
+        <input type="text" name="jumlah_transfer" class="form-control" value="0">
     </div>
   </div>
     <div class="form-group row">
         <label class="col-lg-3">Total Pembayaran</label>
         <div class="col-lg-6">
-            <input type="text" name="" class="form-control">
+            <input type="text" name="sisa_pembayaran" class="form-control" value="0">
         </div>
     </div>
     <div class="form-group row">
@@ -37,7 +37,7 @@
     <div class="form-group row">
         <label class="col-lg-3">Status Pembayaran</label>
         <div class="col-lg-6">
-            <input type="text" name="" class="form-control">
+            <input type="text" name="nama_penyetor" class="form-control">
         </div>
     </div>
     <div class="d-flex flex-row-reverse col-lg-9">
