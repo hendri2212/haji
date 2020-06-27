@@ -54,11 +54,13 @@ class Model extends CI_Model {
 	}
 
 	public function dataPembayaran() {
+		$this->db->join("jamaah", "jamaah.id = pembayaran.jamaah_id");
 		return $this->db->get('pembayaran')->result();
 	}
 	
 	// berkas---------------------------------------------------------
 	public function dataBerkas() {
+		$this->db->join("jamaah", "jamaah.id = berkas.jamaah_id");
 		return $this->db->get('berkas')->result();
 	}
 
@@ -90,6 +92,7 @@ class Model extends CI_Model {
 	}
 	
 	public function dataJadwal() {
+		$this->db->join("jamaah", "jamaah.id = jadwal.jamaah_id");
 		return $this->db->get('jadwal')->result();
 	}
 	
