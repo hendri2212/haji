@@ -14,6 +14,11 @@
             </tr>
         </thead>
         <tbody>
+            <?php if (empty($dataJadwal)) { ?>
+            <tr>
+                <td colspan="5" class="text-center font-weight-bold">NO DATA</td>
+            </tr>
+            <?php } ?>
             <?php $no=1; foreach ($dataJadwal as $data) { ?>
             <tr>
                 <td><?= $no++ ?></td>
