@@ -44,7 +44,9 @@ class Model extends CI_Model {
 	public function bayar() {
 		$data = [
 			"jumlah_transfer" 	=> $this->input->post('jumlah_transfer'),
+			"sisa_pembayaran" 	=> $this->input->post('sisa_pembayaran'),
 			"status_konfirmasi" => $this->input->post('status_konfirmasi'),
+			"nama_penyetor"		=> $this->input->post('nama_penyetor'),
 			"jamaah_id" 		=> $this->input->post('jamaah_id')
 		];
 		$this->db->insert('pembayaran', $data);
