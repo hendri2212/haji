@@ -5,7 +5,7 @@
 <div class="table-responsive">
 	<table class="table table-striped table-hover">
 	  <thead>
-	    <tr>
+	    <tr class="text-nowrap">
 	    	<th>No</th>
         	<th>Nama Jama'ah</th>
 	    	<th>Jumlah Transfer</th>
@@ -28,6 +28,10 @@
 	    	<td>Rp <?= number_format($data->sisa_pembayaran) ?></td>
 	    	<td><?= $data->status_konfirmasi ?></td>
 	    	<td><?= $data->nama_penyetor ?></td>
+			<td>
+				<!-- <a href="<?= base_url('content/editJadwal/'.$data->id) ?>"><i data-feather="edit"></i></a> -->
+				<a href="<?= base_url('content/deletePembayaran/'.$data->id) ?>" onclick="return confirm('Apakah Anda Yakin ?');" class="text-danger"><i data-feather="trash-2"></i></a>
+			</td>
 	    </tr>
       <?php } ?>
 	  </tbody>
