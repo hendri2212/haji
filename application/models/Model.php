@@ -40,6 +40,11 @@ class Model extends CI_Model {
 		return $this->db->get('jamaah')->result();
 	}
 
+	public function deleteJamaah($id) {
+		$this->db->where("id", $id);
+		$this->db->delete("jamaah");
+	}
+
 	// pembayaran-----------------------------------------------------
 	public function bayar() {
 		$data = [
@@ -55,12 +60,19 @@ class Model extends CI_Model {
 
 	public function dataPembayaran() {
 		$this->db->join("jamaah", "jamaah.id = pembayaran.jamaah_id");
+		$this->db->select("pembayaran.id, jamaah.nama_lengkap, pembayaran.jumlah_transfer, pembayaran.sisa_pembayaran, pembayaran.status_konfirmasi, pembayaran.nama_penyetor");
 		return $this->db->get('pembayaran')->result();
+	}
+
+	public function deletePembayaran($id) {
+		$this->db->where("id", $id);
+		$this->db->delete("pembayaran");
 	}
 	
 	// berkas---------------------------------------------------------
 	public function dataBerkas() {
 		$this->db->join("jamaah", "jamaah.id = berkas.jamaah_id");
+		$this->db->select("berkas.id, jamaah.nama_lengkap, berkas.ktp, berkas.buku_nikah, berkas.akta_kelahiran, berkas.ijazah, berkas.passpor, berkas.kesehatan");
 		return $this->db->get('berkas')->result();
 	}
 
@@ -78,6 +90,11 @@ class Model extends CI_Model {
 		redirect("content/berkas");
 	}
 
+	public function deleteBerkas($id) {
+		$this->db->where("id", $id);
+		$this->db->delete("berkas");
+	}
+
 	// jadwal---------------------------------------------------------
 	public function schedule() {
 		$data = [
@@ -93,7 +110,13 @@ class Model extends CI_Model {
 	
 	public function dataJadwal() {
 		$this->db->join("jamaah", "jamaah.id = jadwal.jamaah_id");
+		$this->db->select("jadwal.id, jamaah.nama_lengkap, jadwal.gelombang, jadwal.kloter, jadwal.tgl_berangkat, jadwal.tgl_pulang");
 		return $this->db->get('jadwal')->result();
+	}
+
+	public function deleteJadwal($id) {
+		$this->db->where("id", $id);
+		$this->db->delete("jadwal");
 	}
 	
 	// akun-----------------------------------------------------------

@@ -33,6 +33,11 @@ class Content extends MY_Controller {
 	public function addPendaftaran() {
 		$this->pages('pendaftaran/addPendaftaran');
 	}
+
+	public function deleteJamaah($id) {
+		$this->model->deleteJamaah($id);
+		redirect("content/pendaftaran");
+	}
 	
 	// pembayaran---------------------------------------
 	public function pembayaran() {
@@ -47,6 +52,11 @@ class Content extends MY_Controller {
 
 	public function bayar() {
 		$this->model->bayar();
+	}
+
+	public function deletePembayaran($id) {
+		$this->model->deletePembayaran($id);
+		redirect("content/pembayaran");
 	}
 
 	// berkas-------------------------------------------
@@ -64,6 +74,11 @@ class Content extends MY_Controller {
 		$this->pages('berkas/addBerkas', $data);
 	}
 
+	public function deleteBerkas($id) {
+		$this->model->deleteBerkas($id);
+		redirect("content/berkas");
+	}
+
 	// jadwal-------------------------------------------
 	public function addJadwal() {
 		$data['jamaah']	= $this->model->jamaah();
@@ -77,6 +92,11 @@ class Content extends MY_Controller {
 
 	public function schedule() {
 		$this->model->schedule();
+	}
+
+	public function deleteJadwal($id) {
+		$this->model->deleteJadwal($id);
+		redirect('content/jadwal');
 	}
 
 	// akun---------------------------------------------
