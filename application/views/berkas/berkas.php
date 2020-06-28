@@ -32,10 +32,10 @@
                 <td><?= $data->ijazah ?></td>
                 <td><?= $data->passpor ?></td>
                 <td><?= $data->kesehatan ?></td>
-                <!-- <td>
-                    <a href="<?= base_url('content/editJadwal/'.$data->id) ?>"><i data-feather="edit"></i></a>
-                    <a href="<?= base_url('content/deleteJadwal/'.$data->id) ?>" onclick="return confirm('Apakah Anda Yakin ?');" class="text-danger"><i data-feather="trash-2"></i></a>
-                </td> -->
+                <td>
+                    <!-- <a href="<?= base_url('content/editJadwal/'.$data->id) ?>"><i data-feather="edit"></i></a> -->
+                    <a href="<?= base_url('content/deleteBerkas/'.$data->id) ?>" onclick="return confirm('Apakah Anda Yakin ?');" class="text-danger"><i data-feather="trash-2"></i></a>
+                </td>
             </tr>
             <?php } ?>
         </tbody>
