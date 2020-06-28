@@ -64,6 +64,10 @@
             <td><?= $data->tgl_set ?></td>
             <td><?= $data->nama_bank ?></td>
             <td><?= $data->rekening ?></td>
+			<td>
+				<!-- <a href="<?= base_url('content/editJamaah/'.$data->id) ?>"><i data-feather="edit"></i></a> -->
+				<a href="<?= base_url('content/deleteJamaah/'.$data->id) ?>" onclick="return confirm('Apakah Anda Yakin ?');" class="text-danger"><i data-feather="trash-2"></i></a>
+			</td>
         </tr>
         <?php } ?>
     </tbody>
