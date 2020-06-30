@@ -10,6 +10,17 @@
 	<link rel="stylesheet" type="text/css" href="<?= base_url('./assets/css/bootstrap.min.css') ?>">
 	<link rel="stylesheet" type="text/css" href="<?= base_url('./assets/css/style.css') ?>">
 	<script src="<?= base_url('./assets/js/feather.min.js') ?>"></script>
+
+	<!-- Fungsi Print -->
+	<script>
+		function printContent(el){
+			var restorepage = document.body.innerHTML;
+			var printcontent = document.getElementById(el).innerHTML;
+			document.body.innerHTML = printcontent;
+			window.print();
+			document.body.innerHTML = restorepage;
+		}
+	</script>
 </head>
 <body>
 	<div class="p-2 px-md-4 mb-3 bg-info border-bottom shadow-sm">

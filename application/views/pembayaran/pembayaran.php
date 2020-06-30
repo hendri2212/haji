@@ -2,6 +2,8 @@
 	<h1 class="h2">Pembayaran</h1>
 </div>
 <a href="<?= base_url('content/addPembayaran') ?>" class="btn btn-info">Tambah Data</a>
+<input type="button" value="Print" onclick="printContent('cetak');">
+<div id="cetak">
 <div class="table-responsive">
 	<table class="table table-striped table-hover">
 	  <thead>
@@ -29,11 +31,12 @@
 	    	<td><?= $data->status_konfirmasi ?></td>
 	    	<td><?= $data->nama_penyetor ?></td>
 			<td>
-				<!-- <a href="<?= base_url('content/editJadwal/'.$data->id) ?>"><i data-feather="edit"></i></a> -->
+				<a href="<?= base_url('content/editPembayaran/'.$data->id) ?>"><i data-feather="edit"></i></a>
 				<a href="<?= base_url('content/deletePembayaran/'.$data->id) ?>" onclick="return confirm('Apakah Anda Yakin ?');" class="text-danger"><i data-feather="trash-2"></i></a>
 			</td>
 	    </tr>
       <?php } ?>
 	  </tbody>
 	</table>
+</div>
 </div>
