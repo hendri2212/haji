@@ -138,6 +138,11 @@ class Content extends MY_Controller {
 		redirect('content/jadwal');
 	}
 
+	public function cetakJadwal() {
+		$data['dataJadwal'] = $this->model->dataJadwal();
+		$this->pages('jadwal/cetakJadwal', $data);
+	}
+
 	// akun---------------------------------------------
 	public function logout(){
 		$this->session->sess_destroy();
