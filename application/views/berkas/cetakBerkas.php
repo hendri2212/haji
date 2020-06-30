@@ -1,9 +1,18 @@
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-	<h1 class="h2">Kelengkapan Berkas</h1>
+<div class="d-flex my-2 pb-2 justify-content-end">
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button class="btn btn-sm btn-primary" onclick="printContent('cetak');"><i data-feather="printer"></i> Cetak Data</button>
+        <a href="<?= base_url('content/berkas') ?>" class="btn btn-sm btn-outline-warning">Batal</a>
+    </div>
 </div>
-<a href="<?= base_url('content/addBerkas') ?>" class="btn btn-info">Tambah Data</a>
-<a href="<?= base_url('content/cetakBerkas') ?>" class="btn btn-primary"><i data-feather="printer"></i> Export</a>
-<div class="table-responsive">
+<div id="cetak">
+    <div class="d-flex pb-2 border-bottom">
+        <img src="<?= base_url('./assets/img/logo.png') ?>" class="logo img-fluid mr-3">
+        <div class="col text-center text-uppercase">
+            <h4>pelayanan haji</h4>
+            <h6>kementerian agama kabupaten kotabaru</h6>
+        </div>
+    </div>
+    <h5 class="text-center mt-3 text-uppercase font-weight-bold">data berkas</h5>
     <table class="table table-striped table-hover">
         <thead>
             <tr>
@@ -33,10 +42,6 @@
                 <td><?= $data->ijazah ?></td>
                 <td><?= $data->passpor ?></td>
                 <td><?= $data->kesehatan ?></td>
-                <td>
-                    <!-- <a href="<?= base_url('content/editJadwal/'.$data->id) ?>"><i data-feather="edit"></i></a> -->
-                    <a href="<?= base_url('content/deleteBerkas/'.$data->id) ?>" onclick="return confirm('Apakah Anda Yakin ?');" class="text-danger"><i data-feather="trash-2"></i></a>
-                </td>
             </tr>
             <?php } ?>
         </tbody>

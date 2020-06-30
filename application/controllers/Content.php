@@ -113,6 +113,11 @@ class Content extends MY_Controller {
 		redirect("content/berkas");
 	}
 
+	public function cetakBerkas() {
+		$data['dataBerkas'] = $this->model->dataBerkas();
+		$this->pages("berkas/cetakBerkas", $data);
+	}
+
 	// jadwal-------------------------------------------
 	public function addJadwal() {
 		$data['jamaah']	= $this->model->jamaah();
