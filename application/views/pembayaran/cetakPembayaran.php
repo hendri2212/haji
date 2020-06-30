@@ -1,5 +1,8 @@
 <div class="d-flex my-2 pb-2 justify-content-end">
-    <button class="btn btn-sm btn-primary" onclick="printContent('cetak');"><i data-feather="printer"></i> Cetak Data</button>
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button class="btn btn-sm btn-primary" onclick="printContent('cetak');"><i data-feather="printer"></i> Cetak Data</button>
+        <a href="<?= base_url('content/pembayaran') ?>" class="btn btn-sm btn-outline-warning">Batal</a>
+    </div>
 </div>
 <div id="cetak">
     <!-- <div class="border-bottom"> -->

@@ -47,6 +47,11 @@ class Content extends MY_Controller {
 	public function updateJamaah($id) {
 		$this->model->updateJamaah($id);
 	}
+
+	public function cetakPendaftaran() {
+		$data['jamaah'] = $this->model->jamaah();
+		$this->pages("pendaftaran/cetakPendaftaran", $data);
+	}
 	
 	// pembayaran---------------------------------------
 	public function pembayaran() {

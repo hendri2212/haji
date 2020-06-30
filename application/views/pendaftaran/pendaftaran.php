@@ -1,17 +1,18 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-	<h1 class="h2">Halaman Pendaftaran</h1>
+	<h2>Pendaftaran</h2>
 </div>
 <a href="<?= base_url('content/addPendaftaran') ?>" class="btn btn-info">Tambah Data</a>
-<table class="table table-responsive table-hover table-stripped text-nowrap">
+<a href="<?= base_url('content/cetakPendaftaran') ?>" class="btn btn-primary"><i data-feather="printer"></i> Export</a>
+<table class="table table-responsive table-hover table-stripped">
     <thead>
-        <tr>
+        <tr class="text-nowrap">
             <th>No</th>
             <th>No. Porsi</th>
             <th>No. Validasi</th>
             <th>No. KTP</th>
             <th>Nama Lengkap</th>
             <th>Nama Ayah</th>
-            <th>Tanggal Lahir/th>
+            <th>Tanggal Lahir</th>
             <th>Jenis - Kelamin</th>
             <th>Kewarganegaraan</th>
             <th>Alamat</th>
