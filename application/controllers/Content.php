@@ -63,14 +63,29 @@ class Content extends MY_Controller {
 		$this->model->bayar();
 	}
 
+	public function updatePembayaran($id) {
+		$this->model->updatePembayaran($id);
+	}
+
 	public function deletePembayaran($id) {
 		$this->model->deletePembayaran($id);
 		redirect("content/pembayaran");
 	}
 
 	public function editPembayaran($id) {
+		$data['jamaah'] = $this->model->jamaah();
 		$data["editPembayaran"] = $this->model->editPembayaran($id);
 		$this->pages("pembayaran/editPembayaran", $data);
+	}
+
+	public function cetakPembayaran() {
+		$data["dataPembayaran"] = $this->model->dataPembayaran();
+        $html = $this->pages('pembayaran/cetakPembayaran', $data);
+		
+		// $mpdf = new \Mpdf\Mpdf();
+        // $html = $this->load->view('pembayaran/cetakPembayaran', $data, true);
+        // $mpdf->WriteHTML($html);
+        // $mpdf->Output();
 	}
 
 	// berkas-------------------------------------------

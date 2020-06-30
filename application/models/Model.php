@@ -103,6 +103,27 @@ class Model extends CI_Model {
 		return $this->db->get('pembayaran')->result();
 	}
 
+	public function editPembayaran($id) {
+		$this->db->join("jamaah", "jamaah.id = pembayaran.jamaah_id");
+		$this->db->select("pembayaran.id, jamaah.nama_lengkap, pembayaran.jumlah_transfer, pembayaran.sisa_pembayaran, pembayaran.status_konfirmasi, pembayaran.nama_penyetor, pembayaran.jamaah_id");
+		// return $this->db->get('pembayaran')->result();
+		
+		return $this->db->get_where("pembayaran", ["pembayaran.id" => $id])->row();
+	}
+
+	public function updatePembayaran($id) {
+		$data = [
+			"jumlah_transfer" 	=> $this->input->post('jumlah_transfer'),
+			"sisa_pembayaran" 	=> $this->input->post('sisa_pembayaran'),
+			"status_konfirmasi" => $this->input->post('status_konfirmasi'),
+			"nama_penyetor"		=> $this->input->post('nama_penyetor'),
+			"jamaah_id" 		=> $this->input->post('jamaah_id')
+		];
+		$this->db->where("id", $id);
+		$this->db->update('pembayaran', $data);
+		redirect('./content/pembayaran');
+	}
+
 	public function deletePembayaran($id) {
 		$this->db->where("id", $id);
 		$this->db->delete("pembayaran");
