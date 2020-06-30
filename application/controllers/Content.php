@@ -38,6 +38,15 @@ class Content extends MY_Controller {
 		$this->model->deleteJamaah($id);
 		redirect("content/pendaftaran");
 	}
+
+	public function editJamaah($id) {
+		$data["editJamaah"] = $this->model->editJamaah($id);
+		$this->pages("pendaftaran/editPendaftaran", $data);
+	}
+
+	public function updateJamaah($id) {
+		$this->model->updateJamaah($id);
+	}
 	
 	// pembayaran---------------------------------------
 	public function pembayaran() {
@@ -57,6 +66,11 @@ class Content extends MY_Controller {
 	public function deletePembayaran($id) {
 		$this->model->deletePembayaran($id);
 		redirect("content/pembayaran");
+	}
+
+	public function editPembayaran($id) {
+		$data["editPembayaran"] = $this->model->editPembayaran($id);
+		$this->pages("pembayaran/editPembayaran", $data);
 	}
 
 	// berkas-------------------------------------------

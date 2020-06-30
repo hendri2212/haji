@@ -40,6 +40,45 @@ class Model extends CI_Model {
 		return $this->db->get('jamaah')->result();
 	}
 
+	public function editJamaah($id) {
+		return $this->db->get_where("jamaah", array("id" => $id))->row();
+	}
+
+	public function updateJamaah($id) {
+		$data = [
+			"no_porsi"			=> $this->input->post('no_porsi'),
+			"no_validasi"		=> $this->input->post('no_validasi'),
+			"no_ktp"			=> $this->input->post('no_ktp'),
+			"nama_lengkap"		=> $this->input->post('nama_lengkap'),
+			"nama_ayah"			=> $this->input->post('nama_ayah'),
+			"ttl"				=> $this->input->post('ttl'),
+			"jenis_kelamin"		=> $this->input->post('jenis_kelamin'),
+			"kewarganegaraan"	=> $this->input->post('kewarganegaraan'),
+			"alamat"			=> $this->input->post('alamat'),
+			"desa"				=> $this->input->post('desa'),
+			"kecamatan"			=> $this->input->post('kecamatan'),
+			"kabupaten"			=> $this->input->post('kabupaten'),
+			"provinsi"			=> $this->input->post('provinsi'),
+			"kode_pos"			=> $this->input->post('kode_pos'),
+			"no_hp"				=> $this->input->post('no_hp'),
+			"pendidikan"		=> $this->input->post('pendidikan'),
+			"pekerjaan"			=> $this->input->post('pekerjaan'),
+			"pergi_haji"		=> $this->input->post('pergi_haji'),
+			"status_jamaah"		=> $this->input->post('status_jamaah'),
+			"gol_darah"			=> $this->input->post('gol_darah'),
+			"status_pernikahan"	=> $this->input->post('status_pernikahan'),
+			"kode_diagnosis"	=> $this->input->post('kode_diagnosis'),
+			"ciri_ciri"			=> $this->input->post('ciri_ciri'),
+			"foto"				=> $this->input->post('foto'),
+			"tgl_set"			=> $this->input->post('tgl_set'),
+			"nama_bank"			=> $this->input->post('nama_bank'),
+			"rekening"			=> $this->input->post('rekening'),
+		];
+		$this->db->where("id", $id);
+		$this->db->update('jamaah', $data);
+		redirect('./content/pendaftaran');
+	}
+
 	public function deleteJamaah($id) {
 		$this->db->where("id", $id);
 		$this->db->delete("jamaah");
