@@ -13,6 +13,10 @@
 	<form action="<?= base_url('./content/masuk') ?>" method="post">
 		<input type="text" name="username" placeholder="Ketik ID Jama'ah" class="form-control form-control-lg rounded-0 border-bottom-0 border-secondary">
 		<input type="text" name="password" placeholder="Ketik Password" class="form-control form-control-lg rounded-0 border-secondary">
+		<select name="level" class="form-control form-control-lg rounded-0 border-secondary my-1">
+			<option value="admin">Admin</option>
+			<option value="ketua">Jamaah</option>
+		</select>
 		<input type="submit" name="masuk" value="Masuk" class="btn btn-block btn-success btn-lg rounded-0">
 	</form>
 
