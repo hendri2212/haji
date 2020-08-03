@@ -82,9 +82,17 @@
 						<li class="nav-item">
 							<a class="nav-link" href="<?= base_url('./content/jadwal') ?>">
 								<span data-feather="clock"></span>
-								Jadwal Berangkat
+								Asumsi Keberangkatan
 							</a>
 						</li>
+						<?php if ($this->session->userdata("level")=="admin") { ?>
+							<li class="nav-item">
+								<a class="nav-link" href="<?= base_url('./content/akun') ?>">
+									<span data-feather="users"></span>
+									Akun Jama'ah
+								</a>
+							</li>
+						<?php } ?>
 						<li class="nav-item">
 							<a class="nav-link" href="<?= base_url('./content/logout') ?>">
 								<span data-feather="log-out"></span>
