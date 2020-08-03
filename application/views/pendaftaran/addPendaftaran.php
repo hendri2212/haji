@@ -2,12 +2,12 @@
 	<h1 class="h2">Tambah Halaman Pendaftaran</h1>
 </div>
 <form action="<?= base_url('./content/register') ?>" method="post" class="text-nowrap">
-    <div class="d-flex flex-row-reverse">
+    <!-- <div class="d-flex flex-row-reverse">
         <div class="form-group text-center border p-2">
             <label>No. Porsi</label>
             <input type="text" name="no_porsi" placeholder="No. Porsi" class="form-control form-control-lg">
         </div>
-    </div>
+    </div> -->
     <div class="form-group row">
         <label class="col-lg-2">No. Validasi</label>
         <div class="col-lg-6">
