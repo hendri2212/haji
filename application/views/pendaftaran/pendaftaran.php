@@ -1,13 +1,15 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 	<h2>Pendaftaran</h2>
 </div>
-<a href="<?= base_url('content/addPendaftaran') ?>" class="btn btn-info">Tambah Data</a>
-<a href="<?= base_url('content/cetakPendaftaran') ?>" class="btn btn-primary"><i data-feather="printer"></i> Export</a>
+<?php if ($this->session->userdata("level")=="admin") { ?>
+    <a href="<?= base_url('content/addPendaftaran') ?>" class="btn btn-info">Tambah Data</a>
+    <a href="<?= base_url('content/cetakPendaftaran') ?>" class="btn btn-primary"><i data-feather="printer"></i> Export</a>
+<?php } ?>
 <table class="table table-responsive table-hover table-stripped">
     <thead>
         <tr class="text-nowrap">
             <th>No</th>
-            <th>No. Porsi</th>
+            <!-- <th>No. Porsi</th> -->
             <th>No. Validasi</th>
             <th>No. KTP</th>
             <th>Nama Lengkap</th>
@@ -39,7 +41,7 @@
         <?php $no = 1; foreach ($jamaah as $data) { ?>
         <tr>
             <td><?= $no++ ?></td>
-            <td><?= $data->no_porsi ?></td>
+            <!-- <td><?//= $data->no_porsi ?></td> -->
             <td><?= $data->no_validasi ?></td>
             <td><?= $data->no_ktp ?></td>
             <td><?= $data->nama_lengkap ?></td>

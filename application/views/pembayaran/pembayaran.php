@@ -1,8 +1,10 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 	<h1 class="h2">Pembayaran</h1>
 </div>
-<a href="<?= base_url('content/addPembayaran') ?>" class="btn btn-info">Tambah Data</a>
-<a href="<?= base_url('content/cetakPembayaran') ?>" class="btn btn-primary"><i data-feather="printer"></i> Export</a>
+<?php if ($this->session->userdata("level")=="admin") { ?>
+	<a href="<?= base_url('content/addPembayaran') ?>" class="btn btn-info">Tambah Data</a>
+	<a href="<?= base_url('content/cetakPembayaran') ?>" class="btn btn-primary"><i data-feather="printer"></i> Export</a>
+<?php } ?>
 <div class="table-responsive">
 	<table class="table table-striped table-hover">
 		<thead>
@@ -24,7 +26,7 @@
 		<?php $no=1; foreach ($dataPembayaran as $data) { ?>
 			<tr>
 				<td><?= $no++ ?></td>
-				<td><?= $data->nama_lengkap ?></td>
+				<td><a href="<?= base_url("content/detailPembayaran/$data->jamaah_id") ?>"><?= $data->nama_lengkap ?></a></td>
 				<td>Rp <?= number_format($data->jumlah_transfer) ?></td>
 				<td>Rp <?= number_format($data->sisa_pembayaran) ?></td>
 				<td><?= $data->status_konfirmasi ?></td>
