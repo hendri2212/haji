@@ -17,6 +17,12 @@
     </div>
   </div>
   <div class="form-group row">
+    <label class="col-lg-3">Tanggal Transfer</label>
+    <div class="col-lg-6">
+      <input type="date" name="tgl_transfer" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row">
     <label class="col-lg-3">Jumlah Transfer Terakhir</label>
     <div class="col-lg-6">
         <input type="text" name="jumlah_transfer" class="form-control" value="0">

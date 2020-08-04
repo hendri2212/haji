@@ -31,10 +31,12 @@
 				<td>Rp <?= number_format($data->sisa_pembayaran) ?></td>
 				<td><?= $data->status_konfirmasi ?></td>
 				<td><?= $data->nama_penyetor ?></td>
+				<?php if ($this->session->userdata("level")=="admin") { ?>
 				<td>
 					<a href="<?= base_url('content/editPembayaran/'.$data->id) ?>"><i data-feather="edit"></i></a>
 					<a href="<?= base_url('content/deletePembayaran/'.$data->id) ?>" onclick="return confirm('Apakah Anda Yakin ?');" class="text-danger"><i data-feather="trash-2"></i></a>
 				</td>
+				<?php } ?>
 			</tr>
 		<?php } ?>
 		</tbody>
