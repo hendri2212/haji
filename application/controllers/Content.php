@@ -93,6 +93,11 @@ class Content extends MY_Controller {
         // $mpdf->Output();
 	}
 
+	public function detailPembayaran($id) {
+		$data["detailPembayaran"] = $this->model->detailPembayaran($id);
+		$this->pages("pembayaran/detailPembayaran", $data);
+	}
+
 	// berkas-------------------------------------------
 	public function berkas() {
 		$data['dataBerkas'] = $this->model->dataBerkas();
@@ -143,6 +148,37 @@ class Content extends MY_Controller {
 		$this->pages('jadwal/cetakJadwal', $data);
 	}
 
+	// User---------------------------------------------
+	public function akun() {
+		$data["user"] = $this->model->user();
+		$this->pages("akun/akun", $data);
+	}
+
+	public function addUser() {
+		$data['jamaah'] = $this->model->jamaah();
+		$this->pages("akun/addUser", $data);
+	}
+
+	public function saveUser() {
+		$this->model->saveUser();
+	}
+
+	public function editUser($id) {
+		// $data['jamaah'] = $this->model->jamaah();
+		$data["editUser"] = $this->model->editUser($id);
+		$this->pages("akun/editUser", $data);
+	}
+
+	public function updateUser($id) {
+		$this->model->updateUser($id);
+	}
+	
+	public function deleteUser($id) {
+		$this->model->deleteUser($id);
+		redirect('content/akun');
+	}
+
+
 	// akun---------------------------------------------
 	public function logout(){
 		$this->session->sess_destroy();
@@ -159,11 +195,13 @@ class Content extends MY_Controller {
 	}
 
 	public function masuk(){
-		$username = $this->input->post('username');
-		$password = $this->input->post('password');
+		$username 	= $this->input->post('username');
+		$password 	= $this->input->post('password');
+		$level		= $this->input->post('level');
 		$where = array(
-			'username' => $username,
-			'password' => md5($password)
+			'username' 	=> $username,
+			'password' 	=> md5($password),
+			'level' 	=> $level
 			);
 		$akses = $this->model->cek_login($where)->row();
 		$cek = $this->model->cek_login($where)->num_rows();

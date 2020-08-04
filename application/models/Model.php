@@ -88,6 +88,7 @@ class Model extends CI_Model {
 	public function bayar() {
 		$data = [
 			"jumlah_transfer" 	=> $this->input->post('jumlah_transfer'),
+			"tgl_transfer" 		=> $this->input->post('tgl_transfer'),
 			"sisa_pembayaran" 	=> $this->input->post('sisa_pembayaran'),
 			"status_konfirmasi" => $this->input->post('status_konfirmasi'),
 			"nama_penyetor"		=> $this->input->post('nama_penyetor'),
@@ -98,9 +99,21 @@ class Model extends CI_Model {
 	}
 
 	public function dataPembayaran() {
+		if ($this->session->userdata('level')=="admin") {
+			$this->db->join("jamaah", "jamaah.id = pembayaran.jamaah_id");
+			$this->db->select("pembayaran.id, jamaah.nama_lengkap, pembayaran.jumlah_transfer, pembayaran.sisa_pembayaran, pembayaran.status_konfirmasi, pembayaran.nama_penyetor, pembayaran.jamaah_id");
+			return $this->db->get('pembayaran')->result();
+		} elseif ($this->session->userdata('level')=="ketua") {
+			$this->db->join("jamaah", "jamaah.id = pembayaran.jamaah_id");
+			$this->db->select("pembayaran.id, jamaah.nama_lengkap, pembayaran.jumlah_transfer, pembayaran.sisa_pembayaran, pembayaran.status_konfirmasi, pembayaran.nama_penyetor, pembayaran.jamaah_id");
+			return $this->db->get_where('pembayaran', ["pembayaran.jamaah_id" => $this->session->userdata('full_name')])->result();
+		}
+	}
+
+	public function detailPembayaran($id) {
 		$this->db->join("jamaah", "jamaah.id = pembayaran.jamaah_id");
-		$this->db->select("pembayaran.id, jamaah.nama_lengkap, pembayaran.jumlah_transfer, pembayaran.sisa_pembayaran, pembayaran.status_konfirmasi, pembayaran.nama_penyetor");
-		return $this->db->get('pembayaran')->result();
+		$this->db->select("pembayaran.id, jamaah.nama_lengkap, pembayaran.jumlah_transfer, pembayaran.tgl_transfer, pembayaran.sisa_pembayaran, pembayaran.status_konfirmasi, pembayaran.nama_penyetor, pembayaran.jamaah_id");
+		return $this->db->get_where('pembayaran', ["pembayaran.jamaah_id" => $id])->result();
 	}
 
 	public function editPembayaran($id) {
@@ -170,7 +183,7 @@ class Model extends CI_Model {
 	
 	public function dataJadwal() {
 		$this->db->join("jamaah", "jamaah.id = jadwal.jamaah_id");
-		$this->db->select("jadwal.id, jamaah.nama_lengkap, jadwal.gelombang, jadwal.kloter, jadwal.tgl_berangkat, jadwal.tgl_pulang");
+		$this->db->select("jadwal.id, jamaah.nama_lengkap, jamaah.ttl, jadwal.gelombang, jadwal.kloter, jadwal.tgl_berangkat, jadwal.tgl_pulang");
 		return $this->db->get('jadwal')->result();
 	}
 
@@ -182,5 +195,46 @@ class Model extends CI_Model {
 	// akun-----------------------------------------------------------
 	public function cek_login($where) {
 		return $this->db->get_where('admin', $where);
+	}
+
+	// user-----------------------------------------------------------
+	public function user() {
+		$this->db->join("jamaah", "jamaah.id = admin.full_name");
+		$this->db->select("admin.id, admin.username, jamaah.nama_lengkap");
+		return $this->db->get_where("admin", ["level" => "ketua"])->result();
+		// return $this->db->get("admin")->result();
+	}
+
+	public function saveUser() {
+		$data = [
+			"full_name" => $this->input->post("jamaah_id"),
+			"username" 	=> $this->input->post("username"),
+			"password"	=> md5($this->input->post("password")),
+			"level"		=> "ketua"
+		];
+		$this->db->insert('admin', $data);
+		redirect('./content/akun');
+	}
+
+	public function editUser($id) {
+		$this->db->join("jamaah", "jamaah.id = admin.full_name");
+		$this->db->select("admin.id, admin.username, jamaah.nama_lengkap");
+		return $this->db->get_where("admin", ["admin.id" => $id])->row();
+		// return $this->db->get("admin")->row();
+	}
+
+	public function updateUser($id) {
+		$data = [
+			"username" 	=> $this->input->post("username"),
+			"password"	=> md5($this->input->post("password")),
+		];
+		$this->db->where("id", $id);
+		$this->db->update('admin', $data);
+		redirect('./content/akun');
+	}
+
+	public function deleteUser($id) {
+		$this->db->where("id", $id);
+		$this->db->delete("admin");
 	}
 }
